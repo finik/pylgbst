@@ -59,7 +59,8 @@ class UpstreamMsg(Message):
         assert hub_id == 0
         msg_type = msg._byte()
         assert cls.TYPE == msg_type, "Message type does not match: %x!=%x" % (cls.TYPE, msg_type)
-        assert isinstance(msg.payload, (bytes, bytearray))
+        # This assert will fail on Mac, msg is of type 
+        # assert isinstance(msg.payload, (bytes, bytearray))
         return msg
 
     def __shift(self, vtype, vlen):
